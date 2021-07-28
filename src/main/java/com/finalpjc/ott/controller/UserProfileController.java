@@ -17,10 +17,28 @@ public class UserProfileController {
     private final UserProfileService userProfileService;
     private final UserProfileRepository userProfileRepository;
 
-    @GetMapping("/user/userprofile/pictureList/{username}")
+
+    @PostMapping("/user/userprofile/picture") // 프로필 사진 올리기
+    public void postPicture(UserProfileRequestDto requestDto) {
+        userProfileService.postPicture(requestDto);
+    }
+
+    @PostMapping("/user/userprofile/cover") // 커버 올리기
+    public void postCover(UserProfileRequestDto requestDto) {
+        userProfileService.postCover(requestDto);
+    }
+
+
+    @GetMapping("/user/userprofile/pictureList/{username}") // 전체 프로필 사진 리스트 보기
     public Map<String, List<String>> getPictureList(@PathVariable String username) {
         return userProfileService.getPictureList(username);
     }
+
+    @GetMapping("/user/userprofile/coverList/{username}") // 전체 커버 리스트 보기
+    public Map<String, List<String>> getCoverList(@PathVariable String username) {
+        return userProfileService.getCoverList(username);
+    }
+
 
     @GetMapping("/user/userprofile/picture/{username}")  // 프로필 사진 조회
     public String getPicture(@PathVariable String username) {
@@ -48,12 +66,12 @@ public class UserProfileController {
         userProfileService.updateCover(requestDto);
     }
 
-    @DeleteMapping("/user/userprofile/picture/{username}")
+    @DeleteMapping("/user/userprofile/picture/{username}") // 프로필 사진 삭제
     public void deletePicture(@PathVariable String username) {
         userProfileService.deletePiciture(username);
     }
 
-    @DeleteMapping("/user/userprofile/cover/{username}")
+    @DeleteMapping("/user/userprofile/cover/{username}") // 커버 삭제
     public void deleteCover(@PathVariable String username) {
         userProfileService.deleteCover(username);
     }

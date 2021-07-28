@@ -18,6 +18,17 @@ public class UserProfileService {
 
     private final UserProfileRepository userProfileRepository;
 
+    @Transactional
+    public void postPicture(UserProfileRequestDto requestDto) {
+        UserProfile userProfile = new UserProfile(requestDto.getPicture());
+        userProfileRepository.save(userProfile);
+    }
+
+    @Transactional
+    public void postCover(UserProfileRequestDto requestDto) {
+        UserProfile userProfile = new UserProfile(requestDto.getCover());
+        userProfileRepository.save(userProfile);
+    }
 
     public Map<String, List<String>> getPictureList(String username) {
         Map<String, List<String>> pictureListMap = new HashMap<>();
@@ -25,6 +36,14 @@ public class UserProfileService {
         userProfileRepository.findAllByUsername(username);
         pictureListMap.put("pictures", pictureList);
         return pictureListMap;
+    }
+
+    public Map<String, List<String>> getCoverList(String username) {
+        Map<String, List<String>> coverListMap = new HashMap<>();
+        List<String> coverList = new ArrayList<>();
+        userProfileRepository.findAllByUsername(username);
+        coverListMap.put("covers", coverList);
+        return coverListMap;
     }
 
     @Transactional
@@ -59,8 +78,6 @@ public class UserProfileService {
         );
         userProfile.coverUpdate("");
     }
-
-
 
 
 }
