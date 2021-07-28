@@ -51,7 +51,4 @@ public class ArticleController {
         articleService.deleteArticle(articleId);
     }
 
-
-
-
 }
