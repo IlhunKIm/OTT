@@ -1,8 +1,6 @@
 package com.finalpjc.ott.controller;
 
 import com.finalpjc.ott.dto.FriendRequestRequestDto;
-import com.finalpjc.ott.repository.FriendRepository;
-import com.finalpjc.ott.repository.FriendRequestRepository;
 import com.finalpjc.ott.repository.mapping.FriendObjectMappingFromUserProfile;
 import com.finalpjc.ott.service.FriendService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +13,6 @@ import java.util.Map;
 @RestController
 public class FriendController {
 
-    private final FriendRepository friendRepository;
     private final FriendService friendService;
 
     // 추천 친구 목록 표시
@@ -32,7 +29,7 @@ public class FriendController {
     }
 
     //친구 신청 여부 확인
-    @GetMapping("/user/request-friend/{username}/{friendname}")
+    @GetMapping("/user/request-friend/{username}/{friendName}")
     public Map<String, Boolean> requestFriendChecker(@PathVariable String username, @PathVariable String friendName) {
         return friendService.requestFriendChecker(username, friendName);
     }
