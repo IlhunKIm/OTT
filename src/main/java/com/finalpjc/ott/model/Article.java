@@ -13,6 +13,7 @@ public class Article extends Timestamped{
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
+    private Long id;
 
     @Column(length = 12, nullable = false)
     private String username;
