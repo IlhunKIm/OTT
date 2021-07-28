@@ -13,7 +13,6 @@ public interface UserProfileRepository extends JpaRepository<UserProfile, Long> 
 
     Optional<UserProfile> findByUsername(String username);
 
-    //    UserProfile findByUsername(String username);
     FriendObjectMappingFromUserProfile getByUsername(String username);
     List<UserProfile> findAllByUsername(String username);
     List<FriendObjectMappingFromUserProfile> findAllByOrderByModifiedAtDesc();
