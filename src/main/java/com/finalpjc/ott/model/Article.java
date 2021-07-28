@@ -64,5 +64,12 @@ public class Article extends Timestamped{
 
     }
 
+    public void articleUpdate(ArticleRequestDto requestDto) {
+        this.username = requestDto.getUsername();
+        this.contents = requestDto.getContents();
+        this.picture = requestDto.getPicture();
+        this.video = requestDto.getVideo();
+    }
+
 
 }
