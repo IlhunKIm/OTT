@@ -1,15 +1,18 @@
 package com.finalpjc.ott.model;
 
 import com.finalpjc.ott.dto.ArticleRequestDto;
+import com.finalpjc.ott.repository.mapping.UsernameMapping;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
 @Entity
-public class Article extends Timestamped{
+public class Article extends Timestamped {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
@@ -41,6 +44,9 @@ public class Article extends Timestamped{
     @Transient
     private Boolean articleLikeItChecker;
 
+    @Transient
+    private final List<String> articleLikeItUserlist = new ArrayList<>();
+
     public void addUsernamePicture(String Picture) {
         this.usernamePicture = picture;
     }
@@ -55,6 +61,10 @@ public class Article extends Timestamped{
 
     public void changeLikeItChecker(Boolean trueOrFalse) {
         this.articleLikeItChecker = trueOrFalse;
+    }
+
+    public void addLikeItUserList(UsernameMapping likeItUser) {
+        this.articleLikeItUserlist.add(likeItUser.getUsername());
     }
 
     public Article(ArticleRequestDto requestDto) {
