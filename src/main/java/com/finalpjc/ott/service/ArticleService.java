@@ -60,14 +60,16 @@ public class ArticleService {
 
    }
 
-   @Transactional
+    public Article getArticleByArticleId(Long articleId) {
+        return articleRepository.findById(articleId).orElseThrow(
+                () -> new NullPointerException("articleId not found")
+        );
+    }
+
+
+    @Transactional
     public void deleteArticle(Long articleId){
        articleRepository.deleteById(articleId);
    }
 
-   public Article getArticleByArticleId(Long articleId) {
-       return articleRepository.findById(articleId).orElseThrow(
-               () -> new NullPointerException("articleId not found")
-       );
-   }
 }
