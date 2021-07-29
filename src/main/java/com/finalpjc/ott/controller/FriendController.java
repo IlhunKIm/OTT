@@ -62,7 +62,7 @@ public class FriendController {
     // (신청 받은 사람 기준) 친구 신청 목록 확인
     @GetMapping("user/request-friend-list/requested/{username}")
     public List<FriendObjectMappingFromUserProfile> getRecievedRequestFriendList(@PathVariable String username) {
-        return friendService.getRecievedRequestFriendList(username);
+        return friendService.getReceivedRequestFriendList(username);
     }
 
     // (신청한 사람 기준) 친구 신청 거절

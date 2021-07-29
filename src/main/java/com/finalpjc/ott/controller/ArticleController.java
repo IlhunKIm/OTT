@@ -29,8 +29,8 @@ public class ArticleController {
         return articleService.getPagedArticleList(articleList, username);
     }
 
-    @GetMapping("/user/my-article/{username}/{page}/{size}")
-    public Page<Article> getArticleWithSize(@PathVariable String username, @PathVariable int page, @PathVariable int size) {
+    @GetMapping("/user/my-article/{username}/{page}/{size}")//내 게시글 조회
+    public Page<Article> getMyArticleWithSize(@PathVariable String username, @PathVariable int page, @PathVariable int size) {
         Pageable pageable = PageRequest.of(page - 1, size);
         Page<Article> articleList = articleRepository.findAllByUsernameOrderByCreatedAtAsc(username, pageable);
         return articleService.getPagedArticleList(articleList, username);

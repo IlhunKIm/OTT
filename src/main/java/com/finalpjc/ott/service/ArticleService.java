@@ -70,9 +70,4 @@ public class ArticleService {
                () -> new NullPointerException("articleId not found")
        );
    }
-
-
-
-
-
 }

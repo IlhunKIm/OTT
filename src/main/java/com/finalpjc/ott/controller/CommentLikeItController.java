@@ -20,7 +20,7 @@ public class CommentLikeItController {
     private final CommentLikeItRepository commentLikeItRepository;
     private final CommentLikeItService commentLikeItService;
 
-    @PostMapping("/user/comment/likeIt") // 좋아요 클릭, 더블 클릭 시 해제
+    @PostMapping("/user/comment/likeIt") // 좋아요 클릭, 더블 클릭 시 좋아요 해제
     public Map<String, Boolean> clickLike(@RequestBody CommentLikeItRequestDto requestDto) {
         return commentLikeItService.commentLikeIt(requestDto);
     }

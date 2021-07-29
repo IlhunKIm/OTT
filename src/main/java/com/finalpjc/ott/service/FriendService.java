@@ -199,15 +199,6 @@ public class FriendService {
     }
 
 
-    public List<FriendObjectMappingFromUserProfile> getRecievedRequestFriendList(String username) {
-        List<FriendObjectMappingFromUserProfile> friendProfileList = new ArrayList<>();
-        for (FriendRequest friendRequest : friendRequestRepository.findAllByFriendName(username)) {
-            String requestName = friendRequest.getUsername();
-            friendProfileList.add(userProfileRepository.getByUsername(requestName));
-        }
-        return friendProfileList;
-
-    }
 
 
 }
